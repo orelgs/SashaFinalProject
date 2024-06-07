@@ -2,11 +2,16 @@ import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, Image } from 'react-native';
 import Slider from '@react-native-community/slider';
 
-const logo = require('./assets/DataRhythmLogo.jpg')
+const logo = require('../assets/DataRhythmLogo.jpg');
 
 export default function SliderScreen({ navigation, route }) {
-  const { question, nextScreen } = route.params;
-  const [Rating, setRating] = useState(3); // Initial value set to middle of the range
+  const { question, nextScreen, answers } = route.params;
+  const [rating, setRating] = useState(3); // Initial value set to middle of the range
+
+  const handleNext = () => {
+    const updatedAnswers = { ...answers, [question]: rating };
+    navigation.navigate(nextScreen, { answers: updatedAnswers });
+  };
 
   return (
     <View style={styles.container}>
@@ -19,7 +24,7 @@ export default function SliderScreen({ navigation, route }) {
         step={1}
         minimumTrackTintColor="#FFFFFF"
         maximumTrackTintColor="#000000"
-        value={Rating}
+        value={rating}
         onValueChange={setRating}
       />
       <View style={styles.scaleContainer}>
@@ -38,7 +43,7 @@ export default function SliderScreen({ navigation, route }) {
       <View style={[styles.buttonContainer, { marginBottom: 50 }]}>
         <Button
           title="Next"
-          onPress={() => navigation.navigate(nextScreen)}
+          onPress={handleNext}
         />
       </View>
     </View>

@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, Image } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
-const logo = require('./assets/DataRhythmLogo.jpg');
+const logo = require('../assets/DataRhythmLogo.jpg');
 
 export default function PickerScreen({ navigation, route }) {
-  const { question, nextScreen, defaultHour, defaultMinute } = route.params;
+  const { question, nextScreen, defaultHour, defaultMinute, answers } = route.params;
   const [selectedHour, setSelectedHour] = useState(defaultHour);
   const [selectedMinute, setSelectedMinute] = useState(defaultMinute);
 
   const handleNext = () => {
     const selectedTime = `${selectedHour}:${selectedMinute}`;
-    // Proceed to the next question
-    navigation.navigate(nextScreen);
+    const updatedAnswers = { ...answers, [question]: selectedTime };
+    navigation.navigate(nextScreen, { answers: updatedAnswers });
   };
 
   return (

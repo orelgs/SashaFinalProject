@@ -1,7 +1,7 @@
-import React from "react";
-import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from "react-native";
+import React from 'react';
+import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
-const logo = require('./assets/DataRhythmLogo.jpg');
+const logo = require('../assets/DataRhythmLogo.jpg');
 
 export default function HomeScreen({ navigation }) {
 
