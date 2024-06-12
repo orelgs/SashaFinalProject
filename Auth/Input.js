@@ -30,22 +30,23 @@ export default Input;
 const styles = StyleSheet.create({
   inputContainer: {
     marginVertical: 8,
+    width: 300
   },
   label: {
     color: 'white',
     marginBottom: 4,
   },
   labelInvalid: {
-    color: 'yellow',
+    color: 'white',
   },
   input: {
     paddingVertical: 8,
     paddingHorizontal: 6,
-    backgroundColor: 'blue',
+    backgroundColor: '#F5F5DC',
     borderRadius: 4,
     fontSize: 16,
   },
   inputInvalid: {
-    backgroundColor: 'yellow',
+    backgroundColor: '#FFFFC9',
   },
 });

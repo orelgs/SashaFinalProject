@@ -1,21 +1,36 @@
-import React from 'react';
-import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const logo = require('../assets/DataRhythmLogo.jpg');
 
 export default function HomeScreen({ navigation }) {
+  const [isQuestionnaireCompleted, setIsQuestionnaireCompleted] = useState(false);
 
-  const username = "User"; // Replace with actual username
+  useEffect(() => {
+    async function checkCompletionStatus() {
+      const currentDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
+      const completedDate = await AsyncStorage.getItem('questionnaireCompleted');
+      setIsQuestionnaireCompleted(completedDate === currentDate);
+    }
+
+    checkCompletionStatus();
+
+  }, []);
 
   const handleStartAnswering = () => {
-    navigation.navigate("Question1");
+    if (isQuestionnaireCompleted) {
+      Alert.alert('You have already completed the questionnaire for today.');
+    } else {
+      navigation.navigate("Question1");
+    }
   };
 
   return (
     <View style={styles.container}>
       <Image source={logo} style={styles.logo} resizeMode='contain' />
-      <Text style={styles.welcomeText}>Hello {username}!</Text>
-      <TouchableOpacity onPress={handleStartAnswering} style={styles.buttonContainer}>
+      <Text style={styles.welcomeText}>Hello!</Text>
+      <TouchableOpacity onPress={handleStartAnswering} style={isQuestionnaireCompleted ? styles.disabledButtonContainer : styles.buttonContainer}>
         <Text style={styles.buttonText}>Start Answering</Text>
       </TouchableOpacity>
     </View>
@@ -48,22 +63,18 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     marginTop: 20,
   },
+  disabledButtonContainer: {
+    backgroundColor: 'gray',
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderWidth: 2,
+    borderColor: 'white',
+    marginTop: 20,
+  },
   buttonText: {
     color: 'white',
     fontSize: 18,
     textAlign: 'center',
-  },
-  button: {
-    backgroundColor: '#00B5B9',
-    borderRadius: 5,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    marginVertical: 10,
-  },
-  profileImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    marginBottom: 10,
   },
 });

@@ -1,11 +1,18 @@
 {
   "expo": {
     "name": "DataRhythm1",
-    "slug": "DataRhythm1",
+    "slug": "datarhythm1",
+    "owner": "sash.ky",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "plugins": [
+      [
+        "expo-notifications",
+        "expo-font"
+      ]
+    ],
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -22,6 +29,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "79b36258-b06d-46f2-b70c-0b46003fd09d"
+      }
     }
   }
 }
