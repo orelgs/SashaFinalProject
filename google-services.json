@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "298562885659",
+    "project_id": "sasha-final-project-bfa32",
+    "storage_bucket": "sasha-final-project-bfa32.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:298562885659:android:f3397815a4e23e366780be",
+        "android_client_info": {
+          "package_name": "com.orelts.finalproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "298562885659-2m751e44p4a6o02vk7a0mstjh94qcqbg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.orelts.finalproject",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "298562885659-q1ejopelglb5lmv9sg7i2j2p068f2n3m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZkgo20cJqtyNiW9jjj_2ztp1B2oVfRl4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "298562885659-q1ejopelglb5lmv9sg7i2j2p068f2n3m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "298562885659-8nn1ni2bqtnjbir0kr7cv0h17230v5bp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.orelts.finalproject"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
