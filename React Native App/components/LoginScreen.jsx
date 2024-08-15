@@ -8,13 +8,13 @@ import {
   Image,
   TouchableOpacity,
   Pressable,
-  ActivityIndicator,
 } from "react-native";
 import {
   GoogleSignin,
   statusCodes,
   GoogleSigninButton,
 } from "@react-native-google-signin/google-signin";
+import login from "./../Utils/Auth";
 
 const screenHeight = Dimensions.get("window").height;
 const screenWidth = Dimensions.get("window").width;
@@ -35,7 +35,10 @@ const LoginScreen = ({ navigation }) => {
       setIsInProgress(true);
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      console.log("userinfo", userInfo);
+
+      // Attempt login
+      const result = await login(userInfo["idToken"]);
+      // Save user sessionId
     } catch (error) {
       console.log(error);
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
