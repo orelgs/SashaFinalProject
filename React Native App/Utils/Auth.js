@@ -1,12 +1,12 @@
 import axios from "axios";
 
-const apiUrl = "http://localhost:8031";
-// const loginUrl = apiUrl + "/user/login";
+const ip = "domain";
+const port = 8031;
+const apiUrl = "http://" + ip + ":" + port;
+const loginUrl = apiUrl + "/user/login";
 
 export default login = async (token) => {
   try {
-    console.log("Token: " + token);
-    console.log("URL: " + loginUrl);
     const response = await axios.post(loginUrl, {
       token: token,
     });
